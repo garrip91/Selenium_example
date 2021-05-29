@@ -28,5 +28,5 @@ def get_whole_page(page_link: str, filename: str):
 
 
 
-example = get_whole_page('http://honcharenkozhenya.github.io/my-projects/kinomonster-bootstrap/index.html', 'FILE.HTML')
+example = get_whole_page('http://projects.valyakin.ru/Kinomonster-Bootstrap/show.html', 'FILE.HTML')
 print(example)
