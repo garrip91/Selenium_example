@@ -28,5 +28,5 @@ def get_whole_page(page_link: str, filename: str):
 
 
 
-example = get_whole_page('https://letto-interior.ru/', 'main.html')
+example = get_whole_page('https://www.opti-com.ru/', 'index.html')
 print(example)
