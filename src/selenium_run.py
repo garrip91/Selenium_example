@@ -4,7 +4,7 @@ from time import sleep
 
 def get_whole_page(page_link: str, filename: str):
     
-    with webdriver.Chrome() as chrome:
+    with webdriver.Chrome("webdriver.chrome.driver", "GoogleChromePortable/GoogleChromePortable") as chrome:
         
         chrome.get(page_link)
         
