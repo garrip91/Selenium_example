@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
+
 GoogleChromePortable/
+FROM_r/
+google-chrome-portable-94-0-4606-54_online.paf.exe

@@ -4,7 +4,7 @@ from time import sleep
 
 def get_whole_page(page_link: str, filename: str):
     
-    with webdriver.Chrome("webdriver.chrome.driver", executable_path="chromedriver") as chrome:
+    with webdriver.Chrome() as chrome:
         
         chrome.get(page_link)
         
@@ -29,6 +29,6 @@ def get_whole_page(page_link: str, filename: str):
 
 
 # <<<<<<< HEAD:src/selenium_run.py
-example = get_whole_page('http://sample.oc.pro.project.garrip91.beget.tech/', 'index.html')
+example = get_whole_page('https://www.mantto.com.pe/', 'index.html')
 # >>>>>>> 6f8b7f586cbcd5db4325ee22b8316f0cbc17bb1e:src/selenium_run.py
 print(example)
