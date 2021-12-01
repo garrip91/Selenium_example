@@ -1,2 +1,152 @@
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.mantto.com.pe\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.2"}};
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+/*--------------------------------------------------------------
+ Custom js
+ --------------------------------------------------------------*/
+jQuery(document).ready(function ($) {
+    'use strict';
+
+    //setup parallax
+    $.stellar();
+
+    $(".menu-item-has-children").on("click", function () {
+        if ($(".menu-link").hasClass("active"))
+            $(this).find(".sub-menu").toggle();
+    });
+
+    $('.gallery,.single-featured').magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        removalDelay: 300,
+        mainClass: 'mfp-fade',
+        gallery: {
+            enabled: true
+        }
+    });
+
+    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+        disableOn: 700,
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        fixedContentPos: false
+    });
+
+    //owl carousel
+    $(".wpb_row .client").owlCarousel(
+        {
+            nav: true,
+            dots: false,
+            loop: true,
+            autoplay: true,
+            autoplayHoverPause: true,
+            autoplayTimeout: 3000,
+            autoHeight: true,
+            margin: 20,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                1024: {
+                    items: 6
+                }
+            }
+        }
+    );
+
+    $(".single-project .gallery").owlCarousel(
+        {
+            nav: false,
+            dots: true,
+            loop: true,
+            autoplay: true,
+            autoplayHoverPause: true,
+            autoplayTimeout: 3000,
+            margin: 30,
+            items: 1
+        }
+    );
+
+    $('.counter h2').counterUp({
+        delay: 10,
+        time: 3000
+    });
+
+    $(".single-project .wpb_gallery .wpb_image_grid_ul").owlCarousel(
+        {
+            nav: false,
+            dots: false,
+            loop: false,
+            autoplay: true,
+            autoplayHoverPause: true,
+            autoplayTimeout: 3000,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                1024: {
+                    items: 6
+                }
+            }
+        }
+    );
+
+//    //menu setup
+//    var $menu = $('.navigation'),
+//        $menulink = $('.menu-link');
+//
+//    $menulink.click(function () {
+//        $menulink.toggleClass('active');
+//        $menu.toggleClass('active');
+//        return false;
+//    })
+
+//    $('.navigation').find('.sub-menu-toggle').on('click', function (e) {
+//        var subMenu = $(this).parent().find('ul').first();
+//        var thisLi = $(this).parent();
+//        if (subMenu.css('display') != 'block') {
+//            subMenu.css('display', 'block');
+//            thisLi.addClass('is-open');
+//        } else {
+//            subMenu.css('display', 'none');
+//            thisLi.removeClass('is-open');
+//        }
+//        e.stopPropagation();
+//    });
+
+    // mini-cart
+    var $mini_cart = $('.mini-cart');
+    $mini_cart.on('click', function (e) {
+        $(this).addClass('open');
+    });
+
+    $(document).on('click', function (e) {
+        if ($(e.target).closest($mini_cart).length == 0) {
+            $mini_cart.removeClass('open');
+        }
+    });
+
+    // search in menu
+    var $search_btn = $('.search-box > i'),
+        $search_form = $('form.search-form');
+
+    $search_btn.on('click', function () {
+        $search_form.toggleClass('open');
+    });
+
+    $(document).on('click', function (e) {
+        if ($(e.target).closest($search_btn).length == 0
+            && $(e.target).closest('input.search-field').length == 0
+            && $search_form.hasClass('open')) {
+            $search_form.removeClass('open');
+        }
+    });
+
+    jQuery('li.product').matchHeight({byRow: true});
+});
